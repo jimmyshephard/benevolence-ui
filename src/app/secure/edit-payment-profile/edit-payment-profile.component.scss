@@ -1,0 +1,14 @@
+@import '~src/assets/styles/_variables';
+
+button {
+  background-color: $accent;
+  color: $black;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-focused {
+  color: $accent;
+}

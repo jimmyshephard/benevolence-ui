@@ -1,0 +1,84 @@
+@import '~src/assets/styles/_variables';
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background-color: $primary;
+
+  button {
+    color: $accent;
+  }
+
+  .user-menu {
+    .user-pic {
+      background-color: $accent;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: $black;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+::ng-deep .menu {
+  background-color: $dark-bg-2;
+  margin-top: 12px;
+
+  :hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+mat-list {
+  mat-list-item {
+    a {
+      text-decoration: none;
+    }
+
+    cursor: pointer;
+  }
+
+  mat-list-item:hover {
+    background: $dark-bg-2;
+  }
+}
+
+mat-drawer-container {
+
+  .AuthorizeNetSeal {
+    margin-bottom: auto;
+    margin-top: auto;
+
+    a {
+      text-decoration: none;
+      color: black;
+
+      img {
+        border: 0px;
+        margin: 0px;
+        text-decoration: none;
+      }
+    }
+
+    a:visited {
+      color: black;
+    }
+
+    a:active {
+      color: black;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: black;
+    }
+  }
+
+}

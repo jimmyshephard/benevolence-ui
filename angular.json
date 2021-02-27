@@ -28,6 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/material-theme.scss",
+              "src/assets/styles/bootstrap.min.css",
+              "src/assets/styles/bootstrap-grid.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -65,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bene-ui:build"
+            "browserTarget": "bene-ui:build",
+            "vendorChunk": true
           },
           "configurations": {
             "production": {
@@ -91,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,0 +1,17 @@
+@import '~src/assets/styles/_variables';
+
+main {
+  background-color: $dark-bg-1;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+}
+
+mat-toolbar {
+  background-color: $primary;
+
+  p {
+    margin: auto;
+    font-size: 12px;
+  }
+
+}

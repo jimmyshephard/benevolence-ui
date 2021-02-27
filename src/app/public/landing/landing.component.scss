@@ -1,0 +1,24 @@
+@import'~src/assets/styles/_variables';
+
+button, a {
+  width: 90%;
+  height: 55px;
+  border-radius: 15px;
+}
+
+.logo {
+  background-color: $primary;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.v-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.space {
+  min-height: 400px;
+}

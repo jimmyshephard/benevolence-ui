@@ -1,0 +1,183 @@
+<main>
+  <div class="row">
+    <!--    <div class="col-lg-6">-->
+    <!--      <img src="assets/images/dependents.jpg" class="img-fluid"/>-->
+    <!--    </div>-->
+    <div class="col-lg-12 mt-5 text-center">
+      <form [formGroup]="memberContributionForm" class="guest-donation-form">
+
+        <!--        Begin section for no payment profile-->
+        <div *ngIf="!customerProfile?.paymentProfiles?.length">
+          <h1>Use my credit card</h1>
+
+          <app-alert-panel
+            [config]="{title:'INFO: Authorize.net transactions.', showMessage: false,
+            contentTitle: 'Privacy Policy: ' }">
+            This application allows you to transact through the Authorize.Net platform, none of the information
+            you submit on this page will be stored on this application. If you choose to create a profile by
+            clicking on the "create profile" checkbox, an Authorize.Net Customer Information Manager profile
+            will be created and used to store your sensitive payment
+            information on Authorize.Net secure servers compliant with with payment card industry standards
+            (PCI DSS).
+            If you choose to not create a profile you will be required to enter your credit card information
+            each time you want to transact via this application.
+          </app-alert-panel>
+
+          <mat-form-field class="full-width">
+            <mat-label>First name</mat-label>
+            <input type="firstname" matInput formControlName="firstname" placeholder="Joe" maxlength="30">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('firstname') && !memberContributionForm?.hasError('required')">
+              Please enter your first name
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Last name</mat-label>
+            <input type="lastname" matInput formControlName="lastname" placeholder="Doe" maxlength="30">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('lastname') && !memberContributionForm?.hasError('required')">
+              Please enter your last name
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Amount</mat-label>
+            <input type="amount" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('amount') && !memberContributionForm?.hasError('required')">
+              Please enter amount
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Amount is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Card Number</mat-label>
+            <input type="cardnumber" matInput formControlName="cardnumber" placeholder="****-****-****-****"
+                   maxlength="20">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('cardnumber') && !memberContributionForm?.hasError('required')">
+              Please enter credit card number
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Credit card is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Card Code</mat-label>
+            <input type="cardcode" matInput formControlName="cardcode" placeholder="CVV" maxlength="5">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('cardcode') && !memberContributionForm?.hasError('required')">
+              Please enter card code
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Card code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Zip Code</mat-label>
+            <input type="zip" matInput formControlName="zip" placeholder="75075" maxlength="5">
+            <mat-error *ngIf="memberContributionForm?.hasError('zip') && !memberContributionForm?.hasError('zip')">
+              Please zip code associated with credit card
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Zip code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <mat-label>Expiry Month</mat-label>
+                  <mat-select formControlName="expiry_month">
+                    <mat-option *ngFor="let month of monthList" [value]="month">
+                      {{month}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width">
+                  <mat-label>Expiry Year</mat-label>
+                  <mat-select formControlName="expiry_year">
+                    <mat-option *ngFor="let year of yearOptions" [value]="year">
+                      {{year}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <div class="d-flex align-items-start">
+            <mat-checkbox class="full-width text-left mt-3" formControlName="setDefault">Make default
+            </mat-checkbox>
+            <mat-icon matTooltip="Make this my default payment profile.">info</mat-icon>
+          </div>
+        </div>
+        <!--        End section for no payment profile -->
+
+
+        <!--        Begin section for payment profile-->
+        <div class="row" *ngIf="customerProfile?.paymentProfiles?.length">
+          <h1>Use my payment profile</h1>
+          <app-alert-panel
+            [config]="{title:'INFO: Read more about your Authorize.net payment profile.', showMessage: false,
+            contentTitle: 'Privacy Policy: ' }">
+            This application integrates Authorize.Net CIM - Customer Information Manager - which stores sensitive
+            payment
+            information on Authorize.Net secure servers, simplifying compliance with payment card industry standards
+            (PCI DSS).
+            Each time you use this application your profile is retrieved from CIM and used for transactions. NB This
+            application does not store any of your payment information.
+          </app-alert-panel>
+
+          <mat-form-field class="full-width">
+            <mat-label>Amount</mat-label>
+            <input type="amount" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('amount') && !memberContributionForm?.hasError('required')">
+              Please enter amount
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Amount is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Payment Profile</mat-label>
+            <mat-select formControlName="paymentprofile">
+              <mat-option *ngFor="let profile of customerProfile?.paymentProfiles"
+                          [value]="profile">
+                {{profile.payment.creditCard.cardType}} {{profile.payment.creditCard.cardNumber}}
+                ({{profile.billTo.firstName}} {{profile.billTo.lastName}})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!--        End section for payment profile-->
+
+        <div class="row mt-3">
+          <div class="col-6 p-0 d-flex justify-content-start">
+            <button class="btn btn-lg" [disabled]="busy" (click)="cancel()">
+              Back
+            </button>
+          </div>
+          <div class="col-6 p-0 d-flex justify-content-end">
+            <button class="btn btn-lg ml-3" [disabled]="!memberContributionForm?.valid || busy" (click)="submit()">
+              Submit
+            </button>
+          </div>
+        </div>
+
+      </form>
+      <div class="d-flex justify-content-center mt-5">
+        <mat-spinner *ngIf="busy"></mat-spinner>
+      </div>
+
+    </div>
+  </div>
+</main>

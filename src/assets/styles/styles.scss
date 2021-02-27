@@ -1,0 +1,12 @@
+@import './variables';
+
+main {
+  background-color: $dark-bg-1;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+}
+
+#toast-container > div {
+  opacity:1;
+}
+

@@ -1,0 +1,23 @@
+<mat-card class="alert my-5 d-flex">
+  <mat-card-content>
+    <mat-icon aria-label="Attention">error_outline</mat-icon>
+  </mat-card-content>
+  <mat-card-content>
+    <mat-expansion-panel
+      hideToggle
+      [expanded]="false"
+      (opened)="toggleAlertMessage()"
+      (closed)="toggleAlertMessage()"
+      [disabled]="config.disabled"
+    >
+      <mat-expansion-panel-header [ngClass]="config.class">
+        <mat-panel-title [attr.aria-label]="config.title" [ngClass]="config.class">
+          {{ config.title }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div id="data-extract-privacy" role="region" [attr.aria-label]="config.contentTitle">
+        <ng-content></ng-content>
+      </div>
+    </mat-expansion-panel>
+  </mat-card-content>
+</mat-card>

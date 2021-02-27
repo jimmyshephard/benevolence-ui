@@ -1,0 +1,118 @@
+<app-navbar>
+  <main>
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="assets/images/contribute.jpg" class="img-fluid"/>
+      </div>
+      <div class="col-lg-6 mt-5 text-center">
+        <h1>Contribute as guest</h1>
+        <form [formGroup]="guestDonationForm" class="guest-donation-form">
+          <mat-form-field class="full-width">
+            <mat-label>First name</mat-label>
+            <input type="firstname" matInput formControlName="firstname" placeholder="Joe" maxlength="30">
+            <mat-error *ngIf="guestDonationForm.hasError('firstname') && !guestDonationForm.hasError('required')">
+              Please enter your first name
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Last name</mat-label>
+            <input type="lastname" matInput formControlName="lastname" placeholder="Doe" maxlength="30">
+            <mat-error *ngIf="guestDonationForm.hasError('lastname') && !guestDonationForm.hasError('required')">
+              Please enter your last name
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="lastname" matInput formControlName="email" placeholder="j.doe@gmail.com" maxlength="30">
+            <mat-error *ngIf="guestDonationForm.hasError('email') && !guestDonationForm.hasError('required')">
+              Please enter your email
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Amount</mat-label>
+            <input type="amount" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
+            <mat-error *ngIf="guestDonationForm.hasError('amount') && !guestDonationForm.hasError('required')">
+              Please enter amount
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Amount is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Card Number</mat-label>
+            <input type="cardnumber" matInput formControlName="cardnumber" placeholder="****-****-****-****" maxlength="20">
+            <mat-error *ngIf="guestDonationForm.hasError('cardnumber') && !guestDonationForm.hasError('required')">
+              Please enter credit card number
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Credit card is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Card Code</mat-label>
+            <input type="cardcode" matInput formControlName="cardcode" placeholder="CVV" maxlength="5">
+            <mat-error *ngIf="guestDonationForm.hasError('cardcode') && !guestDonationForm.hasError('required')">
+              Please enter card code
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Card code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Zip Code</mat-label>
+            <input type="zip" matInput formControlName="zip" placeholder="75075" maxlength="5">
+            <mat-error *ngIf="guestDonationForm.hasError('zip') && !guestDonationForm.hasError('zip')">
+              Please zip code associated with credit card
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm.hasError('required')">
+              Zip code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <mat-label>Expiry Month</mat-label>
+                  <mat-select formControlName="expiry_month">
+                    <mat-option *ngFor="let month of monthList" [value]="month">
+                      {{month}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width">
+                  <mat-label>Expiry Year</mat-label>
+                  <mat-select formControlName="expiry_year">
+                    <mat-option *ngFor="let year of yearOptions" [value]="year">
+                      {{year}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <div class="d-flex align-items-end justify-content-around">
+            <a routerLink="/public/landing" class="btn btn-lg ml-3">Back</a>
+            <button class="btn btn-lg ml-3" [disabled]="!guestDonationForm.valid || busy" (click)="submit()">Submit
+            </button>
+          </div>
+        </form>
+        <div class="d-flex justify-content-center mt-5">
+          <mat-spinner *ngIf="busy"></mat-spinner>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</app-navbar>
+

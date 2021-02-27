@@ -1,0 +1,60 @@
+<mat-toolbar>
+  <button *ngIf="auth.user$" mat-icon-button class="example-icon" aria-label="Menu" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Benevolence</span>
+  <span class="spacer"></span>
+  <div class="user-menu" *ngIf="auth.user$ | async as user">
+    <div class="user-pic">{{ user?.given_name.charAt(0) }}</div>
+  </div>
+  <button
+    *ngIf="auth.user$ | async as user"
+    mat-icon-button
+    aria-label="Expand User Profile"
+    [matMenuTriggerFor]="userMenu"
+    aria-haspopup="true"
+    aria-expanded="false">
+    <mat-icon>expand_more</mat-icon>
+  </button>
+  <div>
+    <mat-menu #userMenu color="primary" class="menu" xPosition="after">
+      <a
+        (click)="logout()"
+        class="menu-list-item"
+        mat-menu-item
+        role="menuitem"
+        aria-label="Log Out">
+        <mat-icon data-icon="exit_to_app"></mat-icon>
+        <span (click)="logout()">Log Out</span>
+      </a>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<mat-drawer-container [hasBackdrop]="false">
+  <mat-drawer #drawer [mode]="'side'" [opened]="true">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/secure/dashboard/make-contribution">Make a Contribution</a>
+      <a mat-list-item routerLink="/secure/dashboard/my-payment-profiles">My payment profile(s)</a>
+      <a mat-list-item routerLink="/secure/dashboard/my-contributions">My Contribution History</a>
+    </mat-nav-list>
+    <div class="AuthorizeNetSeal">
+      <script type="text/javascript"
+              language="javascript">var ANS_customer_id = "ed3d95b9-66bd-4471-b319-2818f0821225";</script>
+      <script type="text/javascript" language="javascript"
+              ng-src="//verify.authorize.net/anetseal/seal.js"></script>
+
+      <a
+        href="https://verify.authorize.net/anetseal/?pid=3ed97c1a-7004-40e6-a07e-7a1d1589ef00&amp;rurl=https%3A//neemachurch.com"
+        onmouseover="window.status='http://www.authorize.net/'; return true;"
+        onmouseout="window.status=''; return true;"
+        onclick="window.open('https://verify.authorize.net/anetseal/?pid=3ed97c1a-7004-40e6-a07e-7a1d1589ef00&amp;rurl=https%3A//neemachurch.com','AuthorizeNetVerification','width=600,height=430,dependent=yes,resizable=yes,scrollbars=yes,menubar=no,toolbar=no,status=no,directories=no,location=yes'); return false;"
+        target="_blank">
+        <img src="https://verify.authorize.net/anetseal/images/secure90x72.gif" width="90" height="72"
+             border="0" alt="Authorize.Net Merchant - Click to Verify">
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

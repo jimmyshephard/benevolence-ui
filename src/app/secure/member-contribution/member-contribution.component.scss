@@ -1,0 +1,24 @@
+@import '~src/assets/styles/_variables';
+
+main {
+  min-height: 100vh;
+  padding-bottom: 1rem;
+
+  .full-width {
+    width: 100%;
+  }
+
+  .guest-donation-form {
+    min-width: 150px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  button, a {
+    background-color: $accent;
+    color: $black;
+    width: 80%;
+  }
+
+}
