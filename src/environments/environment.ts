@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   auth_domain: 'murithi.auth0.com',
   auth_client_id: 'i5RDqpaE2vbDz7OnKlLI7P1PfkT7Nbnd',
-  audience: 'https://neema-benevolence'
+  audience: 'https://neema-benevolence',
+  apiRoot: 'http://localhost:3000'
 };
 
 /*

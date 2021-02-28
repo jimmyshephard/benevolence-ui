@@ -3,42 +3,45 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ChargeCardResponse } from '../../shared/models/ChargeCardResponse';
 import { Contribution } from '../../shared/models/Contribution';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerProfileService {
 
+  apiRoot = environment.apiRoot;
+
   constructor(private http: HttpClient) {
   }
 
   chargeCreditCard(payload): Observable<ChargeCardResponse> {
-    return this.http.post<ChargeCardResponse>('api/public/charge-credit-card', payload);
+    return this.http.post<ChargeCardResponse>(`${this.apiRoot}/public/charge-credit-card`, payload);
   }
 
   chargeCustomerProfile(payload): Observable<ChargeCardResponse> {
-    return this.http.post<ChargeCardResponse>('api/secure/customer-profile/charge', payload);
+    return this.http.post<ChargeCardResponse>(`${this.apiRoot}/secure/customer-profile/charge`, payload);
   }
 
   secureChargeCreditCard(payload): Observable<ChargeCardResponse> {
-    return this.http.post<ChargeCardResponse>('api/secure/charge-credit-card', payload);
+    return this.http.post<ChargeCardResponse>(`${this.apiRoot}/secure/charge-credit-card`, payload);
   }
 
   getCustomerProfile(): Observable<any> {
-    return this.http.get('api/secure/customer-profile');
+    return this.http.get(`${this.apiRoot}/secure/customer-profile`);
   }
 
   getYearOptions(): Observable<number[]> {
-    return this.http.get<number[]>('api/public/year-options');
+    return this.http.get<number[]>(`${this.apiRoot}/public/year-options`);
   }
 
   getContributions(): Observable<Contribution[]> {
-    return this.http.get<Contribution[]>('api/secure/contributions');
+    return this.http.get<Contribution[]>(`${this.apiRoot}/secure/contributions`);
 
   }
 
-  editCustomerProfile(payload): Observable<{message: string}> {
-    return this.http.post<{message: string}>('api/secure/customer-profile/update', payload);
+  editCustomerProfile(payload): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.apiRoot}/secure/customer-profile/update`, payload);
 
   }
 }
