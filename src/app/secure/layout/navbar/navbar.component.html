@@ -5,7 +5,8 @@
   <span>Benevolence</span>
   <span class="spacer"></span>
   <div class="user-menu" *ngIf="auth.user$ | async as user">
-    <div class="user-pic">{{ user?.given_name.charAt(0) }}</div>
+    <div class="user-pic" *ngIf="user?.given_name">{{ user?.given_name.charAt(0) }}</div>
+    <div class="user-pic"*ngIf="!user?.given_name && user?.nickname">{{ user?.nickname.charAt(0) }}</div>
   </div>
   <button
     *ngIf="auth.user$ | async as user"

@@ -50,7 +50,7 @@ export class MemberContributionComponent implements OnInit {
       createprofile: [''],
       amount: ['', this.defaultValidators],
       description: [''],
-      paymentprofile: [''],
+      paymentprofile: ['']
     });
   }
 
