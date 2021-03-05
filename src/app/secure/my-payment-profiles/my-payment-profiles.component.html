@@ -5,11 +5,12 @@
     </div>
   </div>
   <div class="row" *ngIf="!customerProfile?.paymentProfiles?.length">
-    <div class="col m-3">
-      <div class="alert alert-warning" role="alert">
-        <mat-icon aria-label="Attention">error_outline</mat-icon>
-        You do not have any payment profiles.
-      </div>
+    <div class="col-12">
+      <app-alert-panel
+        [config]="{title:'INFO:You do not have any payment profiles.', showMessage: false,
+            contentTitle: 'Info: ' }">
+        You payment profiles will appear here.
+      </app-alert-panel>
     </div>
   </div>
   <div class="row" *ngIf="customerProfile?.paymentProfiles?.length">

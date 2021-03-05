@@ -4,7 +4,16 @@
       <h1>My Contributions</h1>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!memberContributions || !memberContributions?.length">
+    <div class="col-12">
+      <app-alert-panel
+        [config]="{title:'INFO:You have made no contributions yet.', showMessage: false,
+            contentTitle: 'Info: ' }">
+        You contributions will appear here.
+      </app-alert-panel>
+    </div>
+  </div>
+  <div class="row" *ngIf="memberContributions && memberContributions?.length">
     <div class="col-8 ml-5">
       <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 mt-5">
 
