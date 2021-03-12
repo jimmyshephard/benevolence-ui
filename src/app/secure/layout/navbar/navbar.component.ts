@@ -12,7 +12,6 @@ export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService,  @Inject(DOCUMENT) private doc: Document) { }
 
   ngOnInit(): void {
-    // TODO .. route away if not logged on
   }
 
   logout(): void {

@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit, OnDestroy {
         localStorage.setItem('user', profile);
         if (profile) {
           console.log('Routing to /secure/dashboard ... ');
-          this.router.navigate(['/secure/dashboard']);
+          this.router.navigate(['/secure/dashboard/my-contributions']);
         }
       }
     );

@@ -9,7 +9,7 @@
         <form [formGroup]="guestDonationForm" class="guest-donation-form">
           <mat-form-field class="full-width">
             <mat-label>First name</mat-label>
-            <input type="firstname" matInput formControlName="firstname" placeholder="Joe" maxlength="30">
+            <input type="firstname" matInput formControlName="firstname" placeholder="First Name" maxlength="30">
             <mat-error *ngIf="guestDonationForm.hasError('firstname') && !guestDonationForm.hasError('required')">
               Please enter your first name
             </mat-error>
@@ -19,7 +19,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Last name</mat-label>
-            <input type="lastname" matInput formControlName="lastname" placeholder="Doe" maxlength="30">
+            <input type="lastname" matInput formControlName="lastname" placeholder="Last Name" maxlength="30">
             <mat-error *ngIf="guestDonationForm.hasError('lastname') && !guestDonationForm.hasError('required')">
               Please enter your last name
             </mat-error>
@@ -29,7 +29,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
-            <input type="lastname" matInput formControlName="email" placeholder="j.doe@gmail.com" maxlength="30">
+            <input type="lastname" matInput formControlName="email" placeholder="Email address" maxlength="30">
             <mat-error *ngIf="guestDonationForm.hasError('email') && !guestDonationForm.hasError('required')">
               Please enter your email
             </mat-error>
@@ -49,7 +49,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Card Number</mat-label>
-            <input type="cardnumber" matInput formControlName="cardnumber" placeholder="****-****-****-****" maxlength="20">
+            <input type="cardnumber" matInput formControlName="cardnumber" placeholder="Credit Card Number" maxlength="20">
             <mat-error *ngIf="guestDonationForm.hasError('cardnumber') && !guestDonationForm.hasError('required')">
               Please enter credit card number
             </mat-error>
@@ -69,7 +69,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Zip Code</mat-label>
-            <input type="zip" matInput formControlName="zip" placeholder="75075" maxlength="5">
+            <input type="zip" matInput formControlName="zip" placeholder="Zip Code" maxlength="5">
             <mat-error *ngIf="guestDonationForm.hasError('zip') && !guestDonationForm.hasError('zip')">
               Please zip code associated with credit card
             </mat-error>

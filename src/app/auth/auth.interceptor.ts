@@ -22,8 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
       .authService
       .isAuthenticated$
       .subscribe(isAuthenticated => {
-        console.log(`is Auth ${isAuthenticated}`);
-        if (!isAuthenticated) {
+        if (!isAuthenticated && request.url.includes('/secure')) {
           this.router.navigate(['/public/landing']);
           return;
         }

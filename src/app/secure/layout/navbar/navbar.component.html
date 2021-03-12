@@ -32,8 +32,8 @@
   </div>
 </mat-toolbar>
 <mat-drawer-container [hasBackdrop]="false">
-  <mat-drawer #drawer [mode]="'side'" [opened]="true">
-    <mat-nav-list>
+  <mat-drawer #drawer [mode]="'side'" [opened]="false">
+    <mat-nav-list *ngIf="auth.user$ | async as user">
       <a mat-list-item routerLink="/secure/dashboard/make-contribution">Make a Contribution</a>
       <a mat-list-item routerLink="/secure/dashboard/my-payment-profiles">My payment profile(s)</a>
       <a mat-list-item routerLink="/secure/dashboard/my-contributions">My Contribution History</a>
