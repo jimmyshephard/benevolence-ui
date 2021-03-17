@@ -5,6 +5,7 @@ import { LandingComponent } from './landing/landing.component';
 import { GuestDonationComponent } from './guest-donation/guest-donation.component';
 import { YearOptionsResolver } from '../shared/year-options.resolver';
 import { LayoutComponent } from './layout/layout.component';
+import { TxDescriptionResolver } from '../shared/tx-description.resolver';
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
       },
       {
         path: 'guest',
-        resolve: {yearOptions: YearOptionsResolver},
+        resolve: {yearOptions: YearOptionsResolver, txDescriptions: TxDescriptionResolver},
         component: GuestDonationComponent
       }
     ]

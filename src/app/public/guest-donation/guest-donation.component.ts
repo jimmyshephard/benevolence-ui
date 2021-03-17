@@ -6,6 +6,7 @@ import { CustomerProfileService } from '../../secure/member-contribution/custome
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBarConfig } from '../../shared/snackbar.config';
+import { TxDescription } from '../../shared/models/TxDescription';
 
 @Component({
   selector: 'app-guest-donation',
@@ -18,7 +19,7 @@ export class GuestDonationComponent implements OnInit {
   busy: boolean;
   monthList = months;
   yearOptions: number[];
-  descriptions = ['Benevolence'];
+  txDescriptions: TxDescription[];
 
 
   constructor(private fb: FormBuilder, private contributionService: CustomerProfileService, private snackBar: MatSnackBar,
@@ -28,6 +29,7 @@ export class GuestDonationComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
     this.yearOptions = this.route.snapshot.data.yearOptions;
+    this.txDescriptions = this.route.snapshot.data.txDescriptions;
   }
 
   private buildForm(): void {
@@ -39,6 +41,7 @@ export class GuestDonationComponent implements OnInit {
       cardcode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5)]],
       expiry_month: ['', Validators.required],
       expiry_year: ['', Validators.required],
+      occurrence: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email, Validators.max(255)]],
       createprofile: [''],
       amount: ['', [Validators.required]],
@@ -50,7 +53,6 @@ export class GuestDonationComponent implements OnInit {
     this.busy = true;
     const data = Object.assign({}, this.guestDonationForm.value);
     data.expirationdate = data.expiry_month + '/' + data.expiry_year;
-    data.description = 'Benevolence';
     data.createprofile = false;
     console.log(data);
     this.contributionService.chargeCreditCard(data).subscribe((response) => {

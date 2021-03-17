@@ -4,7 +4,7 @@
     <!--      <img src="assets/images/dependents.jpg" class="img-fluid"/>-->
     <!--    </div>-->
     <div class="col-lg-12 mt-5 text-center">
-      <form [formGroup]="memberContributionForm" class="guest-donation-form">
+      <form [formGroup]="memberContributionForm" class="member-donation-form">
 
         <!--        Begin section for no payment profile-->
         <div *ngIf="!customerProfile?.paymentProfiles?.length">
@@ -46,8 +46,27 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width">
+            <mat-label>Select what this payment is for</mat-label>
+            <mat-select formControlName="description">
+              <mat-option *ngFor="let val of txDescriptions" [value]="val">
+                {{val.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Occurrence #</mat-label>
+            <input type="text" matInput formControlName="occurrence" placeholder="Occurrence #" maxlength="100">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('occurrence') && !memberContributionForm?.hasError('required')">
+              Please enter occurrence #
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Occurrence # <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
             <mat-label>Amount</mat-label>
-            <input type="amount" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
+            <input type="text" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
             <mat-error
               *ngIf="memberContributionForm?.hasError('amount') && !memberContributionForm?.hasError('required')">
               Please enter amount
@@ -58,7 +77,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Card Number</mat-label>
-            <input type="cardnumber" matInput formControlName="cardnumber" placeholder="Credit Card Number"
+            <input type="text" matInput formControlName="cardnumber" placeholder="Credit Card Number"
                    maxlength="20">
             <mat-error
               *ngIf="memberContributionForm?.hasError('cardnumber') && !memberContributionForm?.hasError('required')">
@@ -70,7 +89,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Card Code</mat-label>
-            <input type="cardcode" matInput formControlName="cardcode" placeholder="CVV" maxlength="5">
+            <input type="text" matInput formControlName="cardcode" placeholder="CVV" maxlength="5">
             <mat-error
               *ngIf="memberContributionForm?.hasError('cardcode') && !memberContributionForm?.hasError('required')">
               Please enter card code
@@ -81,7 +100,7 @@
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Zip Code</mat-label>
-            <input type="zip" matInput formControlName="zip" placeholder="Zip Code" maxlength="5">
+            <input type="text" matInput formControlName="zip" placeholder="Zip Code" maxlength="5">
             <mat-error *ngIf="memberContributionForm?.hasError('zip') && !memberContributionForm?.hasError('zip')">
               Please zip code associated with credit card
             </mat-error>
@@ -136,15 +155,36 @@
             application does not store any of your payment information.
           </app-alert-panel>
 
+
+
           <mat-form-field class="full-width">
             <mat-label>Amount</mat-label>
-            <input type="amount" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
+            <input type="text" matInput formControlName="amount" placeholder="$0.00" maxlength="10">
             <mat-error
               *ngIf="memberContributionForm?.hasError('amount') && !memberContributionForm?.hasError('required')">
               Please enter amount
             </mat-error>
             <mat-error *ngIf="memberContributionForm?.hasError('required')">
               Amount is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Select what this payment is for</mat-label>
+            <mat-select formControlName="description">
+              <mat-option *ngFor="let val of txDescriptions" [value]="val">
+                {{val.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Occurrence #</mat-label>
+            <input type="text" matInput formControlName="occurrence" placeholder="Occurrence Number" maxlength="100">
+            <mat-error
+              *ngIf="memberContributionForm?.hasError('occurrence') && !memberContributionForm?.hasError('required')">
+              Please enter occurrence #
+            </mat-error>
+            <mat-error *ngIf="memberContributionForm?.hasError('required')">
+              Occurrence # <strong>required</strong>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width">

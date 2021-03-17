@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBarConfig } from '../../shared/snackbar.config';
 import { CustomerProfile } from './customerProfile';
 import { AppUrls } from '../../shared/models/app-urls';
+import { TxDescription } from '../../shared/models/TxDescription';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class MemberContributionComponent implements OnInit {
   memberContributionForm: FormGroup;
   customerProfile: CustomerProfile;
   yearOptions: number[];
+  txDescriptions: TxDescription[];
   busy: boolean;
   monthList = months;
   private defaultValidators = [
@@ -34,6 +36,7 @@ export class MemberContributionComponent implements OnInit {
   ngOnInit(): void {
     this.yearOptions = this.route.snapshot.data.yearOptions;
     this.customerProfile = this.route.snapshot.data.customerProfile;
+    this.txDescriptions = this.route.snapshot.data.txDescriptions;
     this.buildForm();
     this.setValidators();
   }
@@ -47,9 +50,10 @@ export class MemberContributionComponent implements OnInit {
       cardcode: [''],
       expiry_month: [''],
       expiry_year: [''],
+      occurrence: ['', this.defaultValidators],
       createprofile: [''],
       amount: ['', this.defaultValidators],
-      description: [''],
+      description: ['', this.defaultValidators],
       paymentprofile: ['']
     });
   }
@@ -68,13 +72,14 @@ export class MemberContributionComponent implements OnInit {
             .subscribe(() => {
               this.memberContributionForm.reset();
               this.router.navigate([AppUrls.MYCONTRIBUTIONS]);
+            }, err => {
+              this.handleError(err);
             });
         });
 
     } else {
       const data = Object.assign({}, this.memberContributionForm.value);
       data.expirationdate = data.expiry_month + '/' + data.expiry_year;
-      data.description = 'Benevolence';
 
       this.customerProfileService
         .secureChargeCreditCard(data)

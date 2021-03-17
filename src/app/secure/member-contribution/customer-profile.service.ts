@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ChargeCardResponse } from '../../shared/models/ChargeCardResponse';
 import { Contribution } from '../../shared/models/Contribution';
 import { environment } from '../../../environments/environment';
+import { TxDescription } from '../../shared/models/TxDescription';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,9 @@ export class CustomerProfileService {
   editCustomerProfile(payload): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(`${this.apiRoot}/secure/customer-profile/update`, payload);
 
+  }
+
+  getTxDescriptions(): Observable<TxDescription[]> {
+    return this.http.get<TxDescription[]>(`${this.apiRoot}/public/tx-descriptions`);
   }
 }

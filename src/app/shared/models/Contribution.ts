@@ -4,4 +4,5 @@ export interface Contribution {
   createdDate: Date;
   email: string;
   customerProfileId: string;
+  txDescription: string;
 }

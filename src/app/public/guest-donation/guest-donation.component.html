@@ -48,6 +48,25 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width">
+            <mat-label>Select what this payment is for</mat-label>
+            <mat-select formControlName="description">
+              <mat-option *ngFor="let val of txDescriptions" [value]="val">
+                {{val.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Occurrence #</mat-label>
+            <input type="text" matInput formControlName="occurrence" placeholder="Occurrence #" maxlength="100">
+            <mat-error
+              *ngIf="guestDonationForm?.hasError('occurrence') && !guestDonationForm?.hasError('required')">
+              Please enter occurrence #
+            </mat-error>
+            <mat-error *ngIf="guestDonationForm?.hasError('required')">
+              Occurrence # <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
             <mat-label>Card Number</mat-label>
             <input type="cardnumber" matInput formControlName="cardnumber" placeholder="Credit Card Number" maxlength="20">
             <mat-error *ngIf="guestDonationForm.hasError('cardnumber') && !guestDonationForm.hasError('required')">

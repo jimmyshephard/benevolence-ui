@@ -8,6 +8,7 @@ import { YearOptionsResolver } from '../shared/year-options.resolver';
 import { CustomerProfileResolver } from '../shared/customer-proflile.resolver';
 import { MyContributionsComponent } from './my-contributions/my-contributions.component';
 import { MyPaymentProfilesComponent } from './my-payment-profiles/my-payment-profiles.component';
+import { TxDescriptionResolver } from '../shared/tx-description.resolver';
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
       {
         path: 'make-contribution',
         component: MemberContributionComponent,
-        resolve: {yearOptions: YearOptionsResolver, customerProfile: CustomerProfileResolver},
+        resolve: {yearOptions: YearOptionsResolver, customerProfile: CustomerProfileResolver, txDescriptions: TxDescriptionResolver },
       },
       {
         path: 'my-contributions',
@@ -32,7 +33,7 @@ const routes = [
       {
         path: 'my-payment-profiles',
         component: MyPaymentProfilesComponent,
-        resolve: {yearOptions: YearOptionsResolver, customerProfile: CustomerProfileResolver}
+        resolve: {yearOptions: YearOptionsResolver, customerProfile: CustomerProfileResolver, txDescriptions: TxDescriptionResolver}
       }
     ]
   }

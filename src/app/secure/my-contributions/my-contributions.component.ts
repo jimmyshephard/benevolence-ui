@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class MyContributionsComponent implements OnInit, AfterViewInit {
 
   memberContributions: Contribution [];
-  displayedColumns: string[] = ['amount', 'transactionId', 'createdDate'];
+  displayedColumns: string[] = ['amount', 'transactionId', 'txDescription', 'createdDate', 'occurrence'];
   dataSource: MatTableDataSource<Contribution>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
