@@ -1,0 +1,9 @@
+packages:
+  - "."
+
+allowBuilds:
+  "@angular/cli": true
+  "esbuild": true
+  "core-js": true
+  "browser-tabs-lock": true
+  "nice-napi": true
