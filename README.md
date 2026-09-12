@@ -1,6 +1,21 @@
-# BeneUi
+# Benevolence UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+## Background
+
+This project is the user interface for Neema Gospel Church benevolence fund, the application is used to replenish funds to the benevolent account whenever an incident occurs among the membership.
+
+The back end API talks to Authorize.Net to facilitate payments on behalf of members
+
+
+## Development
+
+### How to run the application
+
+Stand alone
+
+
+Docker
+
 
 ## Development server
 
