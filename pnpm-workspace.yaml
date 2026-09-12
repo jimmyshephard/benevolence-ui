@@ -1,6 +1,8 @@
 allowBuilds:
-  '@angular/cli': set this to true or false
-  browser-tabs-lock: set this to true or false
-  core-js: set this to true or false
+  '@angular/cli': true
+  browser-tabs-lock: false
+  core-js: false
   es5-ext: set this to true or false
-  fsevents: set this to true or false
+  esbuild: false
+  fsevents: false
+  nice-napi: false
