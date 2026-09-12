@@ -18,7 +18,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     console.log('Init public landing..');
     this.subscription = this.auth.user$.subscribe(
       (profile) => {
-        localStorage.setItem('user', profile);
+        localStorage.setItem('user', JSON.stringify(profile));
         if (profile) {
           console.log('Routing to /secure/dashboard ... ');
           this.router.navigate(['/secure/dashboard/my-contributions']);
