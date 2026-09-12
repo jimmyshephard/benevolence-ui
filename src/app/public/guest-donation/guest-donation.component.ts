@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { months } from '../../shared/models/months';
 import { ResponseCodes } from '../../shared/models/ResponseCodes';
 import { CustomerProfileService } from '../../secure/member-contribution/customer-profile.service';
@@ -15,14 +15,14 @@ import { TxDescription } from '../../shared/models/TxDescription';
 })
 export class GuestDonationComponent implements OnInit {
 
-  guestDonationForm: FormGroup;
+  guestDonationForm: UntypedFormGroup;
   busy: boolean;
   monthList = months;
   yearOptions: number[];
   txDescriptions: TxDescription[];
 
 
-  constructor(private fb: FormBuilder, private contributionService: CustomerProfileService, private snackBar: MatSnackBar,
+  constructor(private fb: UntypedFormBuilder, private contributionService: CustomerProfileService, private snackBar: MatSnackBar,
               private router: Router, private route: ActivatedRoute) {
   }
 

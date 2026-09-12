@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FlatPaymentProfile } from '../member-contribution/customerProfile';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { months } from '../../shared/models/months';
 import { states } from '../../shared/models/states';
 import { AuthService } from '@auth0/auth0-angular';
@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 })
 export class EditPaymentProfileComponent implements OnInit {
 
-  editPaymentProfileForm: FormGroup;
+  editPaymentProfileForm: UntypedFormGroup;
   user: any;
   monthList = months;
   yearOptions: string [];
@@ -30,7 +30,7 @@ export class EditPaymentProfileComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditPaymentProfileComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private snackBar: MatSnackBar,
     private customerProfileService: CustomerProfileService,
     private router: Router,
