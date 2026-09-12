@@ -71,8 +71,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bene-ui:build",
-            "vendorChunk": true
+            "browserTarget": "bene-ui:build"
           },
           "configurations": {
             "production": {
