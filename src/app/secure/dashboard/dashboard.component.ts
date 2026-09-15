@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  constructor() {
-    console.log('Dashboard init');
-  }
+  currentYear: number = new Date().getFullYear();
 }
