@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { GuestDonationComponent } from './guest-donation/guest-donation.component';
 import { YearOptionsResolver } from '../shared/year-options.resolver';
@@ -8,7 +8,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { TxDescriptionResolver } from '../shared/tx-description.resolver';
 
 
-const routes = [
+const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,

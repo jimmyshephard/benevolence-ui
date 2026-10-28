@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CustomerProfileService } from './customer-profile.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { months } from '../../shared/models/months';
@@ -18,7 +18,7 @@ import { TxDescription } from '../../shared/models/TxDescription';
 })
 export class MemberContributionComponent implements OnInit {
 
-  memberContributionForm: FormGroup;
+  memberContributionForm: UntypedFormGroup;
   customerProfile: CustomerProfile;
   yearOptions: number[];
   txDescriptions: TxDescription[];
@@ -30,7 +30,7 @@ export class MemberContributionComponent implements OnInit {
   errorMessage: string;
 
   constructor(private customerProfileService: CustomerProfileService, private router: Router,
-              private fb: FormBuilder, private route: ActivatedRoute, private snackBar: MatSnackBar) {
+              private fb: UntypedFormBuilder, private route: ActivatedRoute, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
